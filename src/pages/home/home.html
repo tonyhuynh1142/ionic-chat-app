@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary">Username</ion-label>
+      <ion-input placeholder="Enter your username" [(ngModel)]="username"></ion-input>
+    </ion-item>
+
+    <button ion-button block (click)="loginUsername()">Login</button>
+  </ion-list>
+</ion-content>
+
+
+ <!-- <items></items> -->
