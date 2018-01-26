@@ -3,23 +3,27 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Hello Ionic</ion-title>
+    <ion-title>Login socials app</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
+  <button ion-button color="primary" (click)="loginWithFacebook()" *ngIf="!provider.loggedIn"> <ion-icon name="logo-facebook"></ion-icon>&nbsp;Login with facebook</button>
 
-  <h3>Welcome to your first Ionic app!</h3>
+  <button ion-button color="primary" (click)="loginWithGoogle()" *ngIf="!provider.loggedIn"><ion-icon name="logo-google"></ion-icon>&nbsp;Login with google</button>
 
-  <p>
-    This starter project is our way of helping you get a functional app running in record time.
-  </p>
-  <p>
-    Follow along on the tutorial section of the Ionic docs!
-  </p>
-  <p>
-    <button ion-button color="primary" menuToggle>Toggle Menu</button>
-  </p>
+  <ion-card *ngIf="provider.loggedIn">
+    <img src="{{ provider.profilePicture }}" />
+    <ion-card-content>
+      <ion-card-title>
+        {{ provider.name }}
+      </ion-card-title>
+      <p style="text-align: center;">
+        {{ provider.email }}
+      </p>
+    </ion-card-content>
+  </ion-card>
 
+  <button ion-button color="primary" (click)="logout()" *ngIf="provider.loggedIn">Logout of {{ provider.providerID === 'facebook.com' ? 'Facebook' : 'Google' }}  </button>
 </ion-content>
