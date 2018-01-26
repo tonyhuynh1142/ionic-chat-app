@@ -1,5 +1,5 @@
-#Setup database:
-https://console.firebase.google.com/
+#Tutorials:
+https://www.youtube.com/watch?v=uUMp7qcHhIc&index=18&list=PLYxzS__5yYQng-XnJhB21Jc7NW1OIaqct
 
-#Mail sigin:
-reactredux1194@gmail.com
+#Database:
+https://console.firebase.google.com/
