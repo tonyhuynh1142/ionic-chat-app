@@ -19,14 +19,22 @@ export class HelloIonicPage {
 
   constructor( private fire: AngularFireAuth) {}
 
-  loginWithFacebook() {
-    let providerFacebook = new firebase.auth.FacebookAuthProvider();
+  login(provider) {
+    let singInProvider = null;
+
+    switch (provider) {
+      case "facebook" :
+        singInProvider = new firebase.auth.FacebookAuthProvider();
+        break;
+      case "google" :
+        singInProvider = new firebase.auth.GoogleAuthProvider();
+        break;
+    }
 
     this.fire
     .auth
-    .signInWithPopup(providerFacebook)
+    .signInWithPopup(singInProvider)
     .then(res => {
-      console.log(res);
       this.provider.providerID = res.additionalUserInfo.providerId;
       this.provider.loggedIn = true;
       this.provider.name = res.user.displayName;
@@ -36,19 +44,6 @@ export class HelloIonicPage {
     .catch(err => {
       console.log('Something went wrong:',err.message);
     });
-  }
-
-  loginWithGoogle() {
-    let providerGoogle = new firebase.auth.GoogleAuthProvider();
-
-    this.fire.auth.signInWithPopup(providerGoogle)
-    .then( res => {
-      this.provider.providerID = res.additionalUserInfo.providerId;
-      this.provider.loggedIn = true;
-      this.provider.name = res.user.displayName;
-      this.provider.email = res.user.email;
-      this.provider.profilePicture = res.user.photoURL;
-    })
   }
 
   logout() {

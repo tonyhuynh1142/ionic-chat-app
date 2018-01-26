@@ -9,9 +9,9 @@
 
 
 <ion-content padding>
-  <button ion-button color="primary" (click)="loginWithFacebook()" *ngIf="!provider.loggedIn"> <ion-icon name="logo-facebook"></ion-icon>&nbsp;Login with facebook</button>
+  <button ion-button color="primary" (click)="login('facebook')" *ngIf="!provider.loggedIn"> <ion-icon name="logo-facebook"></ion-icon>&nbsp;Login with facebook</button>
 
-  <button ion-button color="primary" (click)="loginWithGoogle()" *ngIf="!provider.loggedIn"><ion-icon name="logo-google"></ion-icon>&nbsp;Login with google</button>
+  <button ion-button color="primary" (click)="login('google')" *ngIf="!provider.loggedIn"><ion-icon name="logo-google"></ion-icon>&nbsp;Login with google</button>
 
   <ion-card *ngIf="provider.loggedIn">
     <img src="{{ provider.profilePicture }}" />
