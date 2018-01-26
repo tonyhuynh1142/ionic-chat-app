@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
@@ -17,7 +17,7 @@ export class HelloIonicPage {
     loggedIn : false
   }
 
-  constructor( private fire: AngularFireAuth) {}
+  constructor( private fire: AngularFireAuth, public ref: ChangeDetectorRef) {}
 
   login(provider) {
     let singInProvider = null;
@@ -40,6 +40,9 @@ export class HelloIonicPage {
       this.provider.name = res.user.displayName;
       this.provider.email = res.user.email;
       this.provider.profilePicture = res.user.photoURL;
+      setInterval(() => {
+        this.ref.detectChanges();
+      }, 3000);
     })
     .catch(err => {
       console.log('Something went wrong:',err.message);
